@@ -1,7 +1,22 @@
-import fetch from 'dva/fetch';
+import fetch from "dva/fetch";
 
+function getCount(response) {
+  const { apiResponse, data } = response
+  return {
+    data,
+    count: apiResponse.headers.get('x-total-count')
+  }
+}
 function parseJSON(response) {
-  return response.json();
+
+  async function getData(response) {
+    const data = await response.json()
+    return {
+      data,
+      apiResponse:response
+    } 
+  }
+ return  getData(response)
 }
 
 function checkStatus(response) {
@@ -25,6 +40,6 @@ export default function request(url, options) {
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
-    .then(data => ({ data }))
+    .then(getCount)
     .catch(err => ({ err }));
 }

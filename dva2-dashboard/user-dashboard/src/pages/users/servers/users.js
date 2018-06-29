@@ -1,39 +1,18 @@
-import fetch from 'dva/fetch';
-import { async } from '../../../../../../example/dva/examples/with-react-router-3/src/services/example';
+import { PAGE_SIZE } from "../constants";
+import request from "../../../utils/request";
 
-function parseJSON(response) {
-  return response.json();
+export function fetch({ page = 1 }) {
+  return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
 }
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
- */
-export async  function  request(url, options) {
-  const response= await fetch(url, options)
-    .then(checkStatus)
-  const data=  await response.json();
-  const ret = {
-    data,
-    headers: {},
-  }
-    if (response.headers.get('x-total-count')) {
-      ret.headers['x-total-count'] = response.headers.get('x-total-count');
-    }
-  return ret
- 
-  
-}
+export const remove = id => {
+  return request(`/api/users/${id}`, {
+    method: "DELETE"
+  });
+};
+export const patch = (id, values) => {
+  return request(`/api/users/${id}`, {
+    method: 'PATCH',
+    body:JSON.stringify(values),
+  })
+};
