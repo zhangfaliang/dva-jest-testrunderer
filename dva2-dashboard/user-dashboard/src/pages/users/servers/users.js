@@ -16,3 +16,10 @@ export const patch = (id, values) => {
     body:JSON.stringify(values),
   })
 };
+
+export const create = (values) => { 
+  return request('/api/users', {
+    method: 'POST',
+    body:JSON.stringify(values)
+  })
+}
