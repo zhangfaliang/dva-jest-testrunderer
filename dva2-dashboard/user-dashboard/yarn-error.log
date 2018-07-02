@@ -24,7 +24,10 @@ npm manifest:
       "test": "jest"
     },
     "jest": {
-      "transform": {}
+      "transform": {},
+      "verbose": true,
+      "collectCoverage":true,
+      "collectCoverageFrom" : ["**/*.{js,jsx}", "!**/node_modules/**", "!**/vendor/**"]
     },
     "dependencies": {
       "dva": "^2.3.1",
