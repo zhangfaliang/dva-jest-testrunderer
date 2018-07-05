@@ -30,23 +30,23 @@ describe.skip("", () => {
       console.log("相当于块级元素");
     });
 
-    describe.only("my beverage", () => {
-      test.skip(" test.skip", () => {
-        expect("test.skip").toBe("test.skip");
-      });
-      test.only(" test.only", () => {
-        expect("test.only").toBe("test.only");
-      });
-      test("is delicious", () => {
-        expect(true).toBeTruthy();
-      });
-      it("test change ", () => {
-        expect("test change").toBe("test change");
-      });
-      test("is not sour", () => {
-        expect(false).toBeFalsy();
-      });
-    });
+    // describe.only("my beverage", () => {
+    //   test.skip(" test.skip", () => {
+    //     expect("test.skip").toBe("test.skip");
+    //   });
+    //   test.only(" test.only", () => {
+    //     expect("test.only").toBe("test.only");
+    //   });
+    //   test("is delicious", () => {
+    //     expect(true).toBeTruthy();
+    //   });
+    //   it("test change ", () => {
+    //     expect("test change").toBe("test change");
+    //   });
+    //   test("is not sour", () => {
+    //     expect(false).toBeFalsy();
+    //   });
+    // });
 
     describe("my other beverage", () => {
       console.log("将被跳过");

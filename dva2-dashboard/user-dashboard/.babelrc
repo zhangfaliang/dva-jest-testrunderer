@@ -1,8 +1,13 @@
 {
-  "presets": [["es2015", { "modules": false }], "react"],
   "env": {
-    "test": {
-      "presets": [["es2015"], "react"]
+    "presets": [
+      ["env", {"modules": false }],
+      "react"
+    ],
+  
+    "testing": {
+      "presets": [["env"], "react"]
     }
   }
 }
+

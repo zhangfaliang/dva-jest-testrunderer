@@ -5,20 +5,14 @@
     "build": "umi build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint",
-    "test": "jest"
+    "test": "jest --config ./jest.config.js"
   },
-  "jest": {
-    "transform": {},
-    "verbose": true,
-    "collectCoverage":true,
-    "collectCoverageFrom" : ["**/*.{js,jsx}", "!**/node_modules/**", "!**/vendor/**"],
-    "globals": {
-      "__DEV__": true
-    },
-    "moduleFileExtensions":["js","json","jsx","node"]
-  },
+  "test": "NODE_ENV=testing jest",
   "dependencies": {
     "dva": "^2.3.1",
+    "enzyme-adapter-react-15": "^1.0.5",
+    "jest-transform-stub": "^1.0.0",
+    "react-addons-test-utils": "15.6.2",
     "umi": "^1.0.0",
     "umi-plugin-dva": "^0.7.1"
   },
@@ -33,7 +27,7 @@
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.12.0",
     "jest": "^23.2.0",
-    "react-test-renderer": "^16.4.1",
+    "react-test-renderer": "15.6.2",
     "regenerator-runtime": "^0.12.0"
   }
 }
